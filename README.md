@@ -57,7 +57,7 @@ REDIS_PORT=6379
 ### 4. Execute as migrações e seeders
 
 ```bash
-php artisan migrate --seed
+php artisan migrate 
 ```
 
 ### 5. Inicie os servidores
@@ -65,6 +65,29 @@ php artisan migrate --seed
 ```bash
 npm run dev
 php artisan serve
+```
+
+## 👤 Criar Usuário Admin via Tinker
+Você pode criar um usuário administrador manualmente utilizando o Tinker. Execute o seguinte:
+
+```bash
+php artisan tinker
+```
+
+```bash
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+
+// Cria o usuário admin
+$user = User::create([
+    'name' => 'admin',
+    'email' => 'admin@test.com',
+    'password' => bcrypt('12345678'),
+]);
+
+// Cria (caso ainda não exista) e atribui o papel de admin
+Role::firstOrCreate(['name' => 'admin']);
+$user->assignRole('admin');
 ```
 
 ## 🧪 Testando a API

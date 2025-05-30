@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   UNIQUE KEY `clients_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.clients: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.clients: ~3 rows (aproximadamente)
 INSERT INTO `clients` (`id`, `type`, `name`, `document`, `email`, `phone`, `whatsapp`, `created_at`, `updated_at`) VALUES
 	(3, 'PF', 'Daniel Carro', '13562543816', 'danielcarrobr@gmail.com', '129912547548', '12991257548', '2025-05-29 16:03:58', '2025-05-29 17:46:09'),
 	(4, 'PF', 'cliente1', '25133294816', 'cliente1@teste.com', '129912547548', '12991257548', '2025-05-29 16:38:06', '2025-05-29 16:38:06'),
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `domains` (
   CONSTRAINT `domains_tenant_id_foreign` FOREIGN KEY (`tenant_id`) REFERENCES `tenants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.domains: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.domains: ~2 rows (aproximadamente)
 INSERT INTO `domains` (`id`, `domain`, `tenant_id`, `created_at`, `updated_at`) VALUES
 	(16, 'cliente1.localhost', '8241ce49-c277-4199-8e4b-12ed1e0c8b08', '2025-05-30 00:53:47', '2025-05-30 00:53:47'),
 	(17, 'cliente2.localhost', '44035ecb-9d12-48b7-a457-ca4ea4aab119', '2025-05-30 01:00:36', '2025-05-30 01:00:36'),
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.migrations: ~13 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.migrations: ~0 rows (aproximadamente)
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
 	(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.model_has_roles: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.model_has_roles: ~3 rows (aproximadamente)
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(1, 'App\\Models\\User', 1),
 	(2, 'App\\Models\\User', 4),
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.permissions: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.permissions: ~0 rows (aproximadamente)
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 	(2, 'edit_user', 'web', '2025-05-30 03:58:39', '2025-05-30 03:58:39');
 
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.personal_access_tokens: ~11 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.personal_access_tokens: ~7 rows (aproximadamente)
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 	(3, 'App\\Models\\User', 2, 'api-token', 'ca4fadb8663453c4db4482fcda21bf3f74540ccecb9c47f998f3a75e057f38da', '["*"]', '2025-05-29 05:56:06', NULL, '2025-05-29 05:51:28', '2025-05-29 05:56:06'),
 	(4, 'App\\Models\\User', 4, 'api-token', '890320bf765c57ac9ff153b1fb0f8c09899074c37742eb3f162212c06d1369c4', '["*"]', '2025-05-29 17:25:32', NULL, '2025-05-29 17:12:10', '2025-05-29 17:25:32'),
@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.role_has_permissions: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.role_has_permissions: ~0 rows (aproximadamente)
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(2, 2);
 
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `tenants` (
   CONSTRAINT `tenants_client_id_foreign` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.tenants: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.tenants: ~2 rows (aproximadamente)
 INSERT INTO `tenants` (`id`, `created_at`, `updated_at`, `data`, `client_id`) VALUES
 	('44035ecb-9d12-48b7-a457-ca4ea4aab119', '2025-05-30 01:00:36', '2025-05-30 01:00:36', '{"name": "cliente2", "client_id": "5"}', NULL),
 	('8241ce49-c277-4199-8e4b-12ed1e0c8b08', '2025-05-30 00:53:47', '2025-05-30 00:53:47', '{"name": "cliente1", "client_id": "4"}', NULL),
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `tenant_user` (
   CONSTRAINT `tenant_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela sass_backend.tenant_user: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sass_backend.tenant_user: ~1 rows (aproximadamente)
 INSERT INTO `tenant_user` (`id`, `tenant_id`, `user_id`, `role`, `created_at`, `updated_at`) VALUES
 	(11, '8241ce49-c277-4199-8e4b-12ed1e0c8b08', 4, 'owner', '2025-05-30 00:53:47', '2025-05-30 00:53:47'),
 	(12, '44035ecb-9d12-48b7-a457-ca4ea4aab119', 5, 'owner', '2025-05-30 01:00:36', '2025-05-30 01:00:36'),
@@ -300,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Copiando dados para a tabela sass_backend.users: ~4 rows (aproximadamente)
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `client_id`) VALUES
-	(1, 'Admin', 'sabermaisapps@gmail.com', NULL, '$2y$12$1z4elYa/e62L0wuYBRuYJeCZ.hEivxF7xDnV80oLWt9.o8P1Tfjje', 'NUgDr9wcgUpKV4lNo5WoKMf0MRY4U0SIQzuxMPNtZnVKWzQz72PI0qx2nHSP', '2025-05-29 06:00:23', '2025-05-30 03:55:07', 3),
+	(1, 'Admin', 'admin@teste.com', NULL, '$2y$12$1z4elYa/e62L0wuYBRuYJeCZ.hEivxF7xDnV80oLWt9.o8P1Tfjje', 'NUgDr9wcgUpKV4lNo5WoKMf0MRY4U0SIQzuxMPNtZnVKWzQz72PI0qx2nHSP', '2025-05-29 06:00:23', '2025-05-30 03:55:07', 3),
 	(4, 'cliente1', 'cliente1@teste.com', NULL, '$2y$12$9IGlZROjBc5OyqMnLmgFtO9fLT/V6bK7M3S.XWLE6vZlHFDDN6cEq', NULL, '2025-05-29 16:38:34', '2025-05-30 03:54:28', 4),
 	(5, 'cliente2', 'cliente2@teste.com', NULL, '$2y$12$XTFewJcxREtg423sUiLG.uRlijuR7QpmtgwC5vrDgygt1LcyWvBPG', NULL, '2025-05-29 17:24:55', '2025-05-30 03:54:41', 5),
 	(6, 'cliente3', 'cliente3@teste.com', NULL, '$2y$12$i9W5s275k.FO1h.7AXgMhuhdby8VxMGbYFus969CUbeEGVqvwLm1G', NULL, '2025-05-30 01:41:37', '2025-05-30 03:54:49', 6);
